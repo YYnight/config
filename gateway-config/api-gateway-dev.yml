@@ -1,0 +1,29 @@
+zuul:
+  prefix: /api  #添加路由前缀
+  routes:
+    item-service: /item/**
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 #熔断超时时长： 5000ms
+
+ribbon:
+  ConnectTimeout: 1000 #ribbon链接超时时长
+  ReadTimeout: 3500 #ribbon读取超时时长
+  MaxAutoRetries: 0 #当前服务重试次数
+  MaxAutoRetriesNextServr: 0 #切换服务重试次数
+
+swagger:
+  resources:
+     0:
+        name: service-item
+        location: /api/item/v2/api-docs
+        swaggerVersion: 2.0
+     1:
+        name: app-itmayiedu-member
+        location: /api-member/v2/api-docs
+        swaggerVersion: 2.0
