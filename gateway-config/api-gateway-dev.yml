@@ -6,6 +6,8 @@ zuul:
         path: /upload/**
         serviceId: upload-service
         strip-predix: false
+  ignored-services:
+    - upload-service # 忽略upload-service服务
 
 hystrix:
   command:
